@@ -1,19 +1,21 @@
 - name: configuting the roboshop using ansible role
-  hosts: "{{item}}"
+  hosts: "{{component}}"
   become: yes
   roles:
-    - "{{item}}"
-  loop:
-    - mongodb
-    - catalogue
-    - web
-    - redis
-    - user
-    - cart
-    - mysql
-    - shipping
-    - rabbitmq
-    - payment
+    - "{{component}}"
+
+
+  # loop:
+  #   - mongodb
+  #   - catalogue
+  #   - web
+  #   - redis
+  #   - user
+  #   - cart
+  #   - mysql
+  #   - shipping
+  #   - rabbitmq
+  #   - payment
 
    
 
