@@ -1,7 +1,7 @@
 - name: configuting the roboshop using ansible role
   hosts: "{{component}}"
   become: yes
-  role:
+  roles:
   - "{{component}}"
 
 
