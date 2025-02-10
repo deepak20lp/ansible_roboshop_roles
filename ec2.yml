@@ -1,0 +1,24 @@
+- name: Launch EC2 Instance
+  hosts: localhost
+  gather_facts: no
+  tasks:
+
+    - name: Launch EC2 instance
+      amazon.aws.ec2_instance:
+        name: web
+        instance_type: t2.micro
+        image_id: ami-0b4f379183e5706b9  # Replace with your AMI ID
+        region: us-east-2  # Change to your preferred region
+        #vpc_subnet_id: subnet-xxxxxxxx  # Optional: Replace with a valid subnet ID
+        security_groups: 
+          - allow_all  # Replace with your security group name that allows all traffic
+        network:
+          assign_public_ip: yes
+        wait: yes
+      register: ec2_info
+
+    - name: Print Public and Private IPs
+      debug:
+        msg: 
+          - "Public IP: {{ ec2_info.instances[0].public_ip_address }}"
+          - "Private IP: {{ ec2_info.instances[0].private_ip_address }}"
