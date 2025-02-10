@@ -1,11 +1,11 @@
   - name: get the script
     ansible.builtin.import_role:
-      name: commnon
+      name: common
       tasks_from: nodejs
 
   - name: appsetup
     ansible.builtin.import_role:
-      name: commnon
+      name: common
       tasks_from: appsetup
 
 
