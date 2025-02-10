@@ -25,6 +25,6 @@
 
   - name: load schema
     ansible.builtin.import_role:
-      nme: common
+      name: common
       tasks_from: loadmysql
 
