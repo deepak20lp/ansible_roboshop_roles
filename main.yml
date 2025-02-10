@@ -1,9 +1,23 @@
 - name: configuting the roboshop using ansible role
-  hosts: "{{component}}"
+  hosts: "{{item}}"
   become: yes
   roles:
-  - "{{component}}"
+    - "{{item}}"
+  loop:
+    - mongodb
+    - catalogue
+    - web
+    - redis
+    - user
+    - cart
+    - mysql
+    - shipping
+    - rabbitmq
+    - payment
 
+   
+
+#ansible-playbook -i inventory -e component=mongodb main.yml
 
 
 # - name: configuting the roboshop using ansible role
@@ -11,4 +25,36 @@
 #   become: yes
 #   roles:
 #     - mongodb
-#     - cart
+#     - cart   this is enire wrong
+
+# - name: configuting the roboshop using ansible role
+#   hosts: "{{component}}"
+#   become: yes
+#   roles:
+#   - "{{component}}"
+
+
+
+# - name: Configuring the roboshop using ansible roles
+#   hosts: "{{ component }}"
+#   become: yes
+#   roles: "{{ roles_list }}"
+# ansible-playbook -i inventory main.yml -e '{"component": "web", "roles_list": ["nginx", "app", "db"]}'
+# component: web
+# roles_list:
+#   - nginx
+#   - app
+#   - db
+# ansible-playbook -i inventory main.yml -e @vars.yml
+
+
+
+# - name: Configuring the roboshop using ansible roles
+#   hosts: "{{ item }}"
+#   become: yes
+#   roles:
+#     - "{{ item }}"
+#   loop: "{{ components }}"
+
+#   ansible-playbook -i inventory main.yml -e '{"components": ["web", "db", "app"]}'
+
