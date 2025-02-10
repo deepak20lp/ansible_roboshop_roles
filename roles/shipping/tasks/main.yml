@@ -19,7 +19,7 @@
       chdir: /app
 
   - name: copy service
-    ansible.builtin.sysyemd:
+    ansible.builtin.import_role:
       name: common
       tasks_from: systemd
 
