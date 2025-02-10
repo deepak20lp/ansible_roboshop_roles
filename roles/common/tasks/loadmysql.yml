@@ -1,0 +1,14 @@
+  - name: install mysql client
+    ansible.builtin.yum:
+      name: mysql
+      state: installed
+
+  - name: load data
+    ansible.builtin.shell: mysql -h mysql.deepakreddy.online -uroot -pRoboShop@1 < /app/db/schema.sql
+  - name: load data1
+    ansible.builtin.shell: mysql -h mysql.deepakreddy.online -uroot -pRoboShop@1 < /app/db/app-user.sql 
+  - name: load data2
+    ansible.builtin.shell: mysql -h mysql.deepakreddy.online -uroot -pRoboShop@1 < /app/db/master-data.sql
+  
+
+  

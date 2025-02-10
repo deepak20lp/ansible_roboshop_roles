@@ -1,0 +1,14 @@
+- name: configuting the roboshop using ansible role
+  hosts: "{{component}}"
+  become: yes
+  role:
+  - "{{component}}"
+
+
+
+# - name: configuting the roboshop using ansible role
+#   hosts: "{{component}}"
+#   become: yes
+#   roles:
+#     - mongodb
+#     - cart

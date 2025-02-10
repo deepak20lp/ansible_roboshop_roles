@@ -1,0 +1,22 @@
+  - name: install pyhton36 gcc python3-devel
+    ansible.builtin.import_role:
+      name: common
+      tasks_from: pythonsetup
+      
+
+  - name: check roboshop user exist or not
+    ansible.builtin.import_role:
+      name: common
+      tasks_from: appsetup 
+
+  - name: Install dependencies
+    ansible.builtin.command: pip3.6 install -r requirements.txt
+    args:
+      chdir: /app
+
+  - name: start service
+    ansible.builtin.import_role:
+      name: common
+      tasks_from: systemd
+
+    

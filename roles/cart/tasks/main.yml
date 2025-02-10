@@ -1,0 +1,24 @@
+  - name: get the script
+    ansible.builtin.import_role:
+      name: commnon
+      tasks_from: nodejs
+
+  - name: appsetup
+    ansible.builtin.import_role:
+      name: commnon
+      tasks_from: appsetup
+
+
+  - name: npm install
+    ansible.builtin.command: npm install
+    args:
+      chdir: /app
+
+  - name: systemd 
+    ansible.builtin.import_role:
+      name: common
+      tasks_from: systemd
+
+  
+
+

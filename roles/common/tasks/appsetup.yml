@@ -1,0 +1,31 @@
+  - name: check user roboshop exists docker network create --driver overlay your-overlay-network
+    ansible.builtin.command: "id roboshop"
+    register: out
+    ignore_errors: true
+
+  - name: create user 
+    ansible.builtin.user:
+      name: roboshop
+    when: out.rc != 0
+
+  - name: check if direc is set or not 
+    ansible.builtin.stat:
+      path: /app
+    register: directory
+
+  - name: create directoryy
+    ansible.builtin.file:
+      path: /app
+      state: directory
+    when: directory.stat.exists == false
+
+  - name: download code (from http)
+    ansible.builtin.get_url:
+      url: https://roboshop-builds.s3.amazonaws.com/{{component}}.zip
+      dest: /tmp
+
+  - name: extract artifact
+    ansible.builtin.unarchive:
+      src: /tmp/{{component}}.zip
+      dest: /app
+      remote_src: yes

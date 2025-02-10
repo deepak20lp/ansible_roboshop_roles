@@ -1,0 +1,5 @@
+catalogue_hosts: catalogue.deepakreddy.online 
+user_hosts: user.deepakreddy.online
+cart_hosts: cart.deepakreddy.online
+shipping_hosts: shipping.deepakreddy.online
+payment_hosts: payment.deepakreddy.online

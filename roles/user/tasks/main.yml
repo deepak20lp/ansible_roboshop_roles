@@ -1,0 +1,28 @@
+  - name: install nodejs
+    ansible.builtin.import_role:
+      name: common
+      tasks_from : nodejs 
+
+  - name: remote app setup
+    ansible.builtin.import_role:
+      name: common
+      tasks_from: appsetup
+
+  - name: npm
+    ansible.builtin.command: npm install
+    args:
+      chdir: /app
+
+  - name: copy user service
+    ansible.builtin.import_role:
+      name: common
+      tasks_from: systemd
+
+
+  - name: load MongoDB
+    ansible.builtin.import_role:
+      name: common
+      tasks_from: loadmongodb
+
+  
+    
