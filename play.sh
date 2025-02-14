@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ansible-playbook -i inventory -e component=mongodb main.yml
+ansible-playbook -i inventory -e component=mongodb main.yml  
 ansible-playbook -i inventory -e component=catalogue main.yml
 ansible-playbook -i inventory -e component=web main.yml
 ansible-playbook -i inventory -e component=redis main.yml
